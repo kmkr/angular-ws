@@ -1,4 +1,28 @@
+# Prerequisites
+
+* [node](https://nodejs.org/) installed and available on PATH.
+* grunt-cli installed and available on PATH (see below).
+* Text editor (e.g. Sublime, Vim, Emacs, IntelliJ, Webstorm, ...)
+* Non-IE browser.
+
+# Installing grunt-cli
+
+* `npm install -g grunt-cli`
+
+# How to run
+
+`git clone https://github.com/kmkr/angular-ws.git`
+`cd angular-ws`
+`npm install`
+`grunt serve`
+
+# Running tests
+
+`grunt dev`
+
 # API
+
+(fetched from guestbook repo)
 
 ## Create
 `"POST" "/guestbook" -d $'{"name":"Test"}'`
