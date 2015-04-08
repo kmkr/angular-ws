@@ -7,10 +7,10 @@
 
 # How to run
 
-`git clone https://github.com/kmkr/angular-ws.git`
-`cd angular-ws`
-`npm install`
-`grunt serve`
+* `git clone https://github.com/kmkr/angular-ws.git`
+* `cd angular-ws`
+* `npm install`
+* `grunt serve`
 
 # Running tests
 
