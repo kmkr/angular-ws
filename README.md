@@ -7,12 +7,14 @@ This repository contains a skeleton for the frontend module of the guestbook app
 * Any text editor
 * A browser ready for debugging JavaScript. Chrome out of the box, or Firefox with Firebug installed.
 
-# Running webapp
+# Running the webapp
 
 * `git clone https://github.com/kmkr/angular-ws.git`
 * `cd angular-ws`
 * `npm install`
 * `grunt serve`
+
+A browser window will be spawned and the application displayed.
 
 # Running tests
 
