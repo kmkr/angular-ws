@@ -137,7 +137,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('serve', ['configureProxies', 'connect:server', 'open', 'watch']);
-    grunt.registerTask('dev', ['jshint', 'karma:continuousUnit']);
-    grunt.registerTask('test', ['jshint', 'karma:unit']);
+    grunt.registerTask('serve', ['injector', 'configureProxies', 'connect:server', 'open', 'watch']);
+    grunt.registerTask('dev', ['injector', 'jshint', 'karma:continuousUnit']);
+    grunt.registerTask('test', ['injector', 'jshint', 'karma:unit']);
 };
