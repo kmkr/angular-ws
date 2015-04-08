@@ -1,3 +1,5 @@
+Skeleton for the frontend module of the guestbook application.
+
 # Prerequisites
 
 * [nodejs](https://nodejs.org/) installed
@@ -5,7 +7,7 @@
 * Any text editor
 * A browser ready for debugging JavaScript. Chrome out of the box, or Firefox with Firebug installed.
 
-# How to run
+# Running webapp
 
 * `git clone https://github.com/kmkr/angular-ws.git`
 * `cd angular-ws`
