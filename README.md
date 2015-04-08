@@ -1,13 +1,9 @@
 # Prerequisites
 
-* [node](https://nodejs.org/) installed and available on PATH.
-* grunt-cli installed and available on PATH (see below).
-* Text editor (e.g. Sublime, Vim, Emacs, IntelliJ, Webstorm, ...)
-* Non-IE browser.
-
-# Installing grunt-cli
-
-* `npm install -g grunt-cli`
+* [nodejs](https://nodejs.org/) installed
+* grunt-cli installed (run `npm install grunt-cli`)
+* Any text editor
+* A browser ready for debugging JavaScript. Chrome out of the box, or Firefox with Firebug installed.
 
 # How to run
 
