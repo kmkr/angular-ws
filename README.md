@@ -1,4 +1,4 @@
-Skeleton for the frontend module of the guestbook application.
+This repository contains a skeleton for the frontend module of the guestbook application. [AngularJS](angularjs.org) is used as main JavaScript framework, [Bootstrap](http://getbootstrap.com/) for styling, and [Grunt](http://gruntjs.com/) to assist development and run tests.
 
 # Prerequisites
 
