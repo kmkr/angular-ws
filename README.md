@@ -22,7 +22,9 @@ The application supports both mocked (fake) and service calls to the Dropwizard 
 
 # Running tests
 
-`grunt dev`
+Unit tests runs continuously by `grunt dev`. The server can run concurrently to get quick feedback on failing tests while developing.
+
+Use `grunt test` for one-time test runs.
 
 # API
 
