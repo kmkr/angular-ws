@@ -101,8 +101,8 @@ module.exports = function (grunt) {
                 },
                 proxies: [
                     {
-                        context: '/todo',
-                        host: 'localhost',
+                        context: '/guestbook',
+                        host: '0.0.0.0',
                         port: 8080
                     }
                 ]
