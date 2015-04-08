@@ -16,6 +16,10 @@ This repository contains a skeleton for the frontend module of the guestbook app
 
 A browser window will be spawned and the application displayed.
 
+# Persistence
+
+The application supports both mocked (fake) and service calls to the Dropwizard backend. The latter assumes Dropwizard is available via `http://0.0.0.0:8080`.
+
 # Running tests
 
 `grunt dev`
