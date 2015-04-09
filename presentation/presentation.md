@@ -1,28 +1,24 @@
-# Intro
-
-- Angulars historie
+# Historie
 
 	0.9.0 -------- 1.0.0 -------- 1.3.15
 
 	2010            2012           2015
 
+# Angular
 
-123 KiB production
-938 KiB development
-
-- Noe om hva Angular gjør?
+- Rammeverk for single page webapp
+- MV*
+- Two-way databinding
 
 # Kode-intro
 
-- Vis først tegning av arkitektur. Inkluder dropwizard-backend
-
-- Vis oversikt over teknologier involvert
+- Arkitektur
 
 Vis HTML med:
 
 1. Expressions
 2. Controller med ng-model / ng-click
-3. Controller med sub-controller (child scope)
+3. Controller med sub-controller (child scope / scope inheritance)
 
 # Konsepter
 
@@ -31,28 +27,38 @@ Vis HTML med:
 
 # Konsepter 2
 
-- Modul
+## Modul
 
-- Controller
+Gruppering av komponenter. Typisk gruppering: komponenter som tilsammen løser problem X eller tilbyr feature Y.
 
-- Directive
+## Controller
 
-- Service
+Knytning mellom view og business-logikk. Ingen DOM-manipulering her.
 
-View-independent business logic
+## Directive
 
-Dropp (men nevn):
+Gjenbrukbare view-komponenter, gjerne med business-logikk. DOM-manipulering kan gjøres i directives.
+
+## Service
+
+View-uavhengig business-logikk.
+
+## Andre
 
 - Factory
+- Provider
 - Constant
+- Filter
 
+# Konsepter 3
 
-- DI
+- Dependency injection
+- Scope
+
+# Oppgaver
 
 - Unit testing med Karma og Jasmine
 
 - Integrasjonstesting med Protractor
-
-# Oppgaver
 
 # Angular fremover
