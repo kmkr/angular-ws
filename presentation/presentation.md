@@ -1,8 +1,8 @@
 # Historie
 
-	0.9.0 -------- 1.0.0 -------- 1.3.15
+    0.9.0 -------- 1.0.0 -------- 1.3.15
 
-	2010            2012           2015
+    2010            2012           2015
 
 # Angular
 
@@ -23,7 +23,7 @@ Vis HTML med:
 # Konsepter
 
 - Model / view
-	Det som skjer i modellen oppdateres automatisk i view
+    Det som skjer i modellen oppdateres automatisk i view
 
 # Konsepter 2
 
@@ -56,6 +56,9 @@ View-uavhengig business-logikk.
 - Scope
 
 # Oppgaver
+
+1. Lag en liste over guestbooks
+
 
 - Unit testing med Karma og Jasmine
 
