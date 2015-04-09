@@ -49,9 +49,10 @@ Dropp (men nevn):
 
 - DI
 
-- Unit testing med Karma
+- Unit testing med Karma og Jasmine
 
 - Integrasjonstesting med Protractor
 
 # Oppgaver
 
+# Angular fremover
