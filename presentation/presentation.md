@@ -62,3 +62,11 @@ View-uavhengig business-logikk.
 - Integrasjonstesting med Protractor
 
 # Angular fremover
+
+Angular 2
+
+- ATScript
+- (Vesentlige) API-endringer
+- Forbedre performance
+- Bedre routing
+- Økt grad av modulariseringd
