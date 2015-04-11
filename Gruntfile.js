@@ -21,8 +21,10 @@ module.exports = function (grunt) {
         paths: {
             scripts: {
                 src: [
+                    'src/**/*-app.js',
                     'src/**/*-module.js',
-                    'src/**/*.js'
+                    'src/**/*.js',
+                    '!src/**/*_test.js'
                 ],
                 mock: [
                     'test/mock/*.js'
@@ -40,9 +42,13 @@ module.exports = function (grunt) {
         },
 
         watch: {
-            dev: {
-                files: ['<%= paths.scripts.src %>', '<%= paths.scripts.mock %>', '<%= paths.scripts.tests.unit %>'],
-                tasks: ['injector']
+            src: {
+                files: ['<%= paths.scripts.src %>', '<%= paths.scripts.mock %>'],
+                tasks: ['injector:index']
+            },
+            test: {
+                files: ['<%= paths.scripts.tests.unit %>'],
+                tasks: ['injector:karma']
             }
         },
 
