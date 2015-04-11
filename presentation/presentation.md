@@ -132,14 +132,14 @@ Typisk gruppering:
 
 ```javascript
     angular.module('guestbookApp')
-    .directive('guestbookLink', function () {
+    .directive('guestbookLink', function (GuestbookService) {
         return {
-            link: function (scope, element) {
-                element.bind('click', function () {
+            link: function (scope) {
+                scope.clickHandler = function () {
                     alert('I was clicked');
-                });
+                };
             },
-            template: '<li>{{guestbook.name}}</li>',
+            template: '<span ng-click="clickHandler()">{{guestbook.name}}</span>',
             scope: {
                 'guestbook': '='
             }

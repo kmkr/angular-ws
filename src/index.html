@@ -9,14 +9,21 @@
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="/src/guestbook-app.js"></script>
-    <script src="/src/guestbook-app_test.js"></script>
+    <script src="/src/controller.js"></script>
+    <script src="/src/directive.js"></script>
+    <script src="/src/service.js"></script>
     <script src="/test/mock/mock-services.js"></script>
     <!-- endinjector -->
 </head>
 
 <body>
-	<div ng-app>
-	{{'waz' + 'woz'}}
-	</div>
+    <div ng-app="guestbookApp">
+    <div ng-controller="ListGuestbooksController as listGuestbooksCtrl">
+        {{'waz' + 'woz'}}
+        <ul>
+            <li ng-repeat="guestbook in listGuestbooksCtrl.guestbooks" guestbook-link guestbook="{name: guestbook.name}"></li>
+        </ul>
+        </div>
+    </div>
 </body>
 </html>
