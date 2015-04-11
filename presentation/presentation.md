@@ -4,44 +4,161 @@
 
     2010            2012           2015
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Angular
 
 - Rammeverk for single page webapp
 - MV*
-- Two-way databinding
+- Two-way databinding via _scopes_
+- Egen Ajax-abstraksjon
+- Egen routing
+- Dependency injection
+- Templating med _expressions_
 
-# Kode-intro
 
-- Arkitektur
 
-Vis HTML med:
+
+
+
+
+
+
+
+
+
+
+# Angular kodeeksempler
 
 1. Expressions
+    context, forgiving, ingen loops/exceptions
 2. Controller med ng-model / ng-click
 3. Controller med sub-controller (child scope / scope inheritance)
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Konsepter
 
 - Model / view
     Det som skjer i modellen oppdateres automatisk i view
 
+
+
+
+
+
+
+
+
 # Konsepter 2
 
 ## Modul
 
-Gruppering av komponenter. Typisk gruppering: komponenter som tilsammen løser problem X eller tilbyr feature Y.
+Gruppering av komponenter
+
+Typisk gruppering:
+
+- Komponenter som tilsammen løser problem X
+- Komponenter som tilbyr feature Y
+
+```javascript
+    angular.module('guestbookApp', [
+        'myDependency1',
+        'myDependency2'
+    ]);
+```
 
 ## Controller
 
-Knytning mellom view og business-logikk. Ingen DOM-manipulering her.
+- Knytning mellom view og business-logikk
+- Ingen DOM-manipulering i controllers
 
-## Directive
-
-Gjenbrukbare view-komponenter, gjerne med business-logikk. DOM-manipulering kan gjøres i directives.
+```javascript
+    angular.module('guestbookApp')
+    .controller('ListGuestbooksController', function () {
+        this.guestbooks = [
+            { id: 1, name: 'A guestbook' },
+            { id: 2, name: 'Another guestbook' },
+        ]
+    });
+```
 
 ## Service
 
-View-uavhengig business-logikk.
+- View-uavhengig business-logikk
+- Husk single-responsibility-principle
+- Enkelt å teste
+
+```javascript
+    angular.module('guestbookApp')
+    .service('GuestbookService', function ($http) {
+        this.get = function () {
+            return $http.get('/guestbook/list')
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+    });
+```
+
+## Directive
+
+- Gjenbrukbare view-komponenter
+- Gjerne med business-logikk
+- DOM-manipulering kan gjøres i directives
+
+```javascript
+    angular.module('guestbookApp')
+    .directive('guestbookLink', function () {
+        return {
+            link: function (scope, element) {
+                element.bind('click', function () {
+                    alert('I was clicked');
+                });
+            },
+            template: '<li>{{guestbook.name}}</li>',
+            scope: {
+                'guestbook': '='
+            }
+        };
+    });
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Andre
 
@@ -50,10 +167,20 @@ View-uavhengig business-logikk.
 - Constant
 - Filter
 
-# Konsepter 3
 
-- Dependency injection
-- Scope
+
+
+
+# Arkitektur
+
+!arkitektur.png!
+
+
+
+
+
+
+
 
 # Oppgaver
 
