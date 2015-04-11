@@ -87,22 +87,19 @@ module.exports = function (grunt) {
                 options: {
                     port: '<%= portNumber %>',
                     hostname: '0.0.0.0',
-                    middleware: function(connect, options) {
-                        var middlewares = [];
-                        var directory = options.directory ||
-                          options.base[options.base.length - 1];
-                        if (!Array.isArray(options.base)) {
-                            options.base = [options.base];
+                    middleware: function (connect, options) {
+                        var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+                        if (Array.isArray(options.base)) {
+                            options.base = options.base[0];
                         }
-
-                        options.base.forEach(function(base) {
+                        return [
+                            // Include the proxy first
+                            proxy,
                             // Serve static files.
-                            middlewares.push(connect.static(base));
-                        });
-
-                        // Make directory browse-able.
-                        middlewares.push(connect.directory(directory));
-                        return middlewares;
+                            connect.static(options.base),
+                            // Make empty directories browsable.
+                            connect.directory(options.base)
+                        ];
                     }
                 },
                 proxies: [
@@ -143,7 +140,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('serve', ['injector', 'configureProxies', 'connect:server', 'open', 'watch']);
+    grunt.registerTask('serve', ['injector', 'configureProxies:server', 'connect:server', 'open', 'watch']);
     grunt.registerTask('dev', ['injector', 'jshint', 'karma:continuousUnit']);
     grunt.registerTask('test', ['injector', 'jshint', 'karma:unit']);
 };
