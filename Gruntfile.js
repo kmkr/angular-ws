@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                 ],
                 tests: {
                     unit: [
-                        'src/**/*-test.js'
+                        'src/**/*_test.js'
                     ]
                 },
             },

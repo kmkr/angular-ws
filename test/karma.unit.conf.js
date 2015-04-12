@@ -8,9 +8,8 @@ module.exports = function (config) {
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'src/guestbook-app.js',
-            'src/directive.js',
-            'src/service.js',
-            'test/mock/mock-services.js'
+            'test/mock/mock-services.js',
+            'src/guestbook-app_test.js'
             <!-- endinjector -->
         ],
 
