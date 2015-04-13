@@ -6,4 +6,8 @@ angular.module('guestbooksModule')
                 return response.data;
             });
     };
+
+    this.create = function (guestbook) {
+        return $http.post('/guestbook', guestbook);
+    };
 });
