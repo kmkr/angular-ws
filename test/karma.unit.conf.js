@@ -11,6 +11,7 @@ module.exports = function (config) {
             'src/guestbook-app.js',
             'src/guestbooks/guestbooks-module.js',
             'src/guestbooks/guestbooks-controller.js',
+            'src/guestbooks/guestbooks-service.js',
             'test/mock/guestbook-app-mock.js',
             'src/guestbook-app_test.js'
             <!-- endinjector -->

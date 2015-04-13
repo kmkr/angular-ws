@@ -12,11 +12,12 @@
         <script src="/src/guestbook-app.js"></script>
         <script src="/src/guestbooks/guestbooks-module.js"></script>
         <script src="/src/guestbooks/guestbooks-controller.js"></script>
+        <script src="/src/guestbooks/guestbooks-service.js"></script>
         <script src="/test/mock/guestbook-app-mock.js"></script>
         <!-- endinjector -->
     </head>
 
-    <body class="container" ng-app="guestbookApp">
+    <body class="container" ng-app="guestbookAppMock">
         <div ng-controller="GuestbooksController as guestbooksCtrl">
             <ul>
                 <li ng-repeat="guestbook in guestbooksCtrl.guestbooks">

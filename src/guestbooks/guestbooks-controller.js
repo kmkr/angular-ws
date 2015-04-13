@@ -1,6 +1,7 @@
-angular.module('guestbooksModule').controller('GuestbooksController',  function () {
-    this.guestbooks = [
-        {id: 1, name: 'A guestbook'},
-        {id: 2, name: 'Another guestbook'}
-    ];
+angular.module('guestbooksModule')
+.controller('GuestbooksController',  function (GuestbookService) {
+    GuestbookService.get()
+        .then(function (guestbooks) {
+            this.guestbooks = guestbooks;
+        }.bind(this));
 });

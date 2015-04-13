@@ -3,10 +3,14 @@
 
 
 
+# Hent kode-repo:
+
+`git clone https://github.com/kmkr/angular-ws.git`
 
 
+# Hvis du allerede har sjekket ut repoet:
 
-
+`git pull origin master`
 
 
 
@@ -303,13 +307,17 @@ angular.module('guestbooksModule')
 - Utnytt dependency injection til å få tak i service:
 - Sett gjerne opp mockdata, eller bruk faktisk backend
 
+Rakk du ikke oppgave 1? Kjør:
+
+`git stash -u`
+`git checkout task_2`
 
 ### `test/mock/guestbook-app-mock.js`
 
 ```javascript
 angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
     .run(function ($httpBackend) {
-        $httpBackend.whenGET('/guestbook').respond([
+        $httpBackend.whenGET('/guestbook/list').respond([
             {
                 id: 1,
                 name: 'My guestbook'
@@ -346,6 +354,11 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 - Utvid `index.html` med mulighet til å opprette nye guestbooks
 - Utvid `guestbook-service` med en metode `create()` som sender til backend.
 - Oppdater intern guestbook-struktur i controller ved suksess
+
+Rakk du ikke oppgave 2? Kjør:
+
+`git stash -u`
+`git checkout task_3`
 
 ### `index.html`
 
