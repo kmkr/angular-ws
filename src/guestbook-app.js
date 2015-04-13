@@ -1,1 +1,3 @@
-angular.module('guestbookApp', []);
+angular.module('guestbookApp', [
+    'guestbooksModule'
+]);

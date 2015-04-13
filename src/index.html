@@ -10,11 +10,19 @@
         <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/src/guestbook-app.js"></script>
+        <script src="/src/guestbooks/guestbooks-module.js"></script>
+        <script src="/src/guestbooks/guestbooks-controller.js"></script>
         <script src="/test/mock/guestbook-app-mock.js"></script>
         <!-- endinjector -->
     </head>
 
-    <body>
-
+    <body class="container" ng-app="guestbookApp">
+        <div ng-controller="GuestbooksController as guestbooksCtrl">
+            <ul>
+                <li ng-repeat="guestbook in guestbooksCtrl.guestbooks">
+                    {{guestbook.name}}
+                </li>
+            </ul>
+        </div>
     </body>
 </html>
