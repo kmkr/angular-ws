@@ -10,7 +10,9 @@
     </form>
     <ul>
         <li ng-repeat="guestbook in guestbooksCtrl.guestbooks">
-            {{guestbook.name}}
+            <a ng-href="#guestbooks/{{guestbook.id}}">
+                {{guestbook.name}}
+            </a>
         </li>
     </ul>
 </div>
