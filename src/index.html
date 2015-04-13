@@ -11,6 +11,7 @@
         <script src="/bower_components/angular-route/angular-route.js"></script>
         <script src="/src/guestbook-app.js"></script>
         <script src="/src/guestbooks/guestbooks-module.js"></script>
+        <script src="/src/guestbook-routing.js"></script>
         <script src="/src/guestbooks/guestbooks-controller.js"></script>
         <script src="/src/guestbooks/guestbooks-service.js"></script>
         <script src="/test/mock/guestbook-app-mock.js"></script>
@@ -18,21 +19,6 @@
     </head>
 
     <body class="container" ng-app="guestbookAppMock">
-        <div ng-controller="GuestbooksController as guestbooksCtrl">
-            <form ng-submit="guestbooksCtrl.create()">
-                <div class="form-group">
-                    <label>
-                        Navn
-                        <input ng-model="guestbooksCtrl.newGuestbook.name" />
-                    </label>
-                </div>
-                <button type="submit">Opprett</button>
-            </form>
-            <ul>
-                <li ng-repeat="guestbook in guestbooksCtrl.guestbooks">
-                    {{guestbook.name}}
-                </li>
-            </ul>
-        </div>
+        <ng-view></ng-view>
     </body>
 </html>
