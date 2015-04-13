@@ -7,6 +7,7 @@ module.exports = function (config) {
             <!-- injector:js -->
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
+            'bower_components/angular-route/angular-route.js',
             'src/guestbook-app.js',
             'test/mock/mock-services.js',
             'src/guestbook-app_test.js'
