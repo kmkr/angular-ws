@@ -200,7 +200,7 @@ angular.module('guestbooksModule')
 .controller('GuestbooksController', function () {
     this.guestbooks = [
         { id: 1, name: 'A guestbook' },
-        { id: 2, name: 'Another guestbook' },
+        { id: 2, name: 'Another guestbook' }
     ]
 });
 ```
@@ -669,7 +669,7 @@ Rakk du ikke oppgave 3? Kjør:
 ### Oppgave 5: Innfør "entries"
 
 1. Bruk gjerne mappe "entries" og modulen "entriesModule"
-2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries. Bruk URL [](/guestbook/{guestbookId}/entries)
+2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries. Bruk URI: `/guestbook/{guestbookId}/entries`
 3. Sett gjerne opp mockdata, eller bruk faktisk backend
 4. Konfigurer en ny route for `EntriesController`
 4. Lag `EntriesController` og inject `entries` ved hjelp av resolve
@@ -751,13 +751,13 @@ angular.module('entriesModule')
 
 
 
-### Oppgave 6: lag "entry" som et directive
+### Oppgave 6: Lag "entry" som et directive
 
 Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget
 
 Hint:
 
-1. [](https://docs.angularjs.org/guide/directive)
+1. [Dokumentasjon] på [1]
 
 Rakk du ikke oppgave 5? Kjør:
 
@@ -772,6 +772,7 @@ Rakk du ikke oppgave 5? Kjør:
 </ul>
 ```
 
+[1]: https://docs.angularjs.org/guide/directive
 
 
 
@@ -803,13 +804,15 @@ Oppdater status for entry
 
 Hint:
 
-1. Oppdatering skjer med PUT til [](/guestbook/{guestBookId}/entry/{id}/{status})
+1. Oppdatering skjer med PUT til URI `/guestbook/{guestBookId}/entry/{id}/{status}`
 2. Utvid `entry.html` med en form
 3. Eksponer en liste over statuser fra EntryDirective
 4. Benytt `ngOptions`-directive til å vise statusene i en `<select>`.
-5. Dokumentasjon på [](https://docs.angularjs.org/api/ng/directive/ngOptions)
+5. Dokumentasjon for [ngOptions] [2]
 6. Utvid `EntriesService` med en update-funksjon.
 7. Eksponer en `update()` funksjon i directive som delegerer til service
+
+[2]: https://docs.angularjs.org/api/ng/directive/ngOptions
 
 ```javascript
 angular.module('entriesModule')
@@ -856,7 +859,9 @@ Rakk du ikke oppgave 6? Kjør:
 
 1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som et utgangspunkt
 2. Implementer _lukking_ av guestbook. Se "Close" i `README.md`
-3. Skriv jasmine-tester for `entry-directive.js`. Se "Testing directives" på [](https://docs.angularjs.org/guide/unit-testing)
+3. Skriv jasmine-tester for `entry-directive.js`. Se [Testing directives] [3]
+
+[3]: https://docs.angularjs.org/guide/unit-testing
 
 
 
