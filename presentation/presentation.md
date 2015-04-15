@@ -8,6 +8,22 @@
 
 
 
+              # AngularJS
+
+               2015-04-15
+
+
+        kris-mikael.krister@webstep.no
+
+
+
+
+
+git
+
+
+
+
 
 
 
@@ -47,34 +63,15 @@
 
 
 
-
-
-
-
-
-
 # Angular
 
-- Rammeverk for single page webapp
+- Rammeverk for single-page webapps
 - MV*
 - Two-way databinding via _scopes_
-- Egen Ajax-abstraksjon
-- Egen routing
-- Dependency injection
+- Ajax-abstraksjon (`$http`)
+- Routing
 - Templating med _expressions_
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Dependency injection
 
 
 
@@ -105,9 +102,14 @@
 # Angular kodeeksempler
 
 1. Expressions
-    context, forgiving, ingen loops/exceptions
-2. Controller med ng-model / ng-click
-3. Controller med sub-controller (child scope / scope inheritance)
+    forgiving
+    filters/ng-model
+    context
+    ingen loops/exceptions
+
+2. Controller
+    ng-click
+
 
 
 
@@ -304,6 +306,10 @@ angular.module('guestbooksModule')
 - Utnytt dependency injection til å få tak i service:
 - Sett gjerne opp mockdata, eller bruk faktisk backend
 
+Rakk du ikke oppgave 1? Kjør:
+
+`git stash -u`
+`git checkout task_2`
 
 ### `test/mock/guestbook-app-mock.js`
 
@@ -348,6 +354,11 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 - Utvid `guestbook-service` med en metode `create()` som sender til backend
 - Konfigurer mock for POST til `/guestbook`
 - Oppdater intern guestbook-struktur i controller ved suksess
+
+Rakk du ikke oppgave 2? Kjør:
+
+`git stash -u`
+`git checkout task_3`
 
 ### `index.html`
 
