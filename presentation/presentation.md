@@ -757,7 +757,7 @@ Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget
 
 Hint:
 
-1. [Dokumentasjon] på [1]
+1. Sjekk [dokumentasjon for directive] [1]
 
 Rakk du ikke oppgave 5? Kjør:
 
@@ -859,7 +859,7 @@ Rakk du ikke oppgave 6? Kjør:
 
 1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som et utgangspunkt
 2. Implementer _lukking_ av guestbook. Se "Close" i `README.md`
-3. Skriv jasmine-tester for `entry-directive.js`. Se [Testing directives] [3]
+3. Skriv jasmine-tester for `entry-directive.js`. Se "Testing directives" i [Angulars dokumentasjon om unit testing] [3]
 
 [3]: https://docs.angularjs.org/guide/unit-testing
 
