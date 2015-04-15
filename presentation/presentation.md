@@ -110,19 +110,19 @@
 # Angular kodeeksempler
 
 1. Expressions
-    forgiving
-    filters/ng-model
-    context
-    ingen loops/exceptions
+    - forgiving
+    - filters/ng-model
+    - context
+    - ingen loops/exceptions
 
 2. Controller
-    ng-click
-    ng-submit
-    filters/function
+    - ng-click
+    - ng-submit
+    - filters/function
 
 3. Directive
-    scope
-    template
+    - scope
+    - template
 
 
 
@@ -146,37 +146,9 @@
 
 
 
+# Guestbook-klient
 
-
-
-# Konsepter
-
-- Model / view
-    Det som skjer i modellen oppdateres automatisk i view
-- Arkitektur
-    !arkitektur.png!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Konsepter 2
-
+![](arkitektur.png)
 
 ## Modul
 
@@ -188,10 +160,10 @@ Typisk gruppering:
 - Komponenter som tilbyr feature Y
 
 ```javascript
-    angular.module('guestbookApp', [
-        'guestbooksModule',
-        'entriesModule'
-    ]);
+angular.module('guestbookApp', [
+    'guestbooksModule',
+    'entriesModule'
+]);
 ```
 
 
@@ -220,7 +192,8 @@ Typisk gruppering:
 - Knytning mellom view og business-logikk
 - Ingen DOM-manipulering i controllers
 
-## `guestbooks/guestbooks-controller.js`
+
+`guestbooks/guestbooks-controller.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -249,14 +222,15 @@ angular.module('guestbooksModule')
 
 
 
-## Oppgave 1: Vis en liste over guestbooks
+### Oppgave 1: Guestbook-liste
 
+Vis en liste over guestbooks
 
 Hint/tips:
 
 1. Bruk hardkodet liste av guestbooks
-2. Eksponer via controller
-3. Lag egen modul "guestbookModule"
+2. Eksponer liste via controller
+3. Bruk ny modul "guestbookModule"
 4. Hver modul bør ha en egen mappe, eks: "/guestbooks"
 5. Husk `ng-app="guestbookApp"` i `index.html`
 
@@ -333,7 +307,7 @@ Hint/tips:
 
 
 
-### `guestbooks/guestbook-service.js`
+`guestbooks/guestbook-service.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -367,7 +341,7 @@ angular.module('guestbooksModule')
 
 
 
-## Oppgave 2: Hent guestbooks asynkront
+### Oppgave 2: Hent guestbooks asynkront
 
 1. Innfør `GuestbookService` for å hente data i stedet for å bruke hardkodet guestbook-array
 2. Husk at service returnerer et _promise_
@@ -400,7 +374,7 @@ Rakk du ikke oppgave 1? Kjør:
 
 
 
-### `test/mock/guestbook-app-mock.js`
+`test/mock/guestbook-app-mock.js`
 
 ```javascript
 angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
@@ -429,6 +403,9 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 
 
+## Service 2 - POST
+
+`$http.post(url, data)`
 
 
 
@@ -437,15 +414,23 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 
 
-## Oppgave 3: Opprett nye guestbooks
+
+
+
+
+
+
+### Oppgave 3: Opprett nye guestbooks
 
 Utvid `index.html` med mulighet til å opprette nye guestbooks
 
 Hint:
 
-1. Utvid `GuestbookService` med en metode `create()` som sender til backend. Se "Create" i README.md
-2. Konfigurer mock for POST til `/guestbook`
-3. Oppdater intern guestbook-struktur i controller ved suksess
+1. Bruk et vanlig HTML-form med `ng-submit`
+2. Husk `<button type="submit">My button</button>`
+3. Utvid `GuestbookService` med en metode `create()` som sender til backend. Se "Create" i README.md
+4. Konfigurer mock for POST til `/guestbook`
+5. Oppdater intern guestbook-struktur i controller ved suksess
 
 Rakk du ikke oppgave 2? Kjør:
 
@@ -467,7 +452,7 @@ Rakk du ikke oppgave 2? Kjør:
 
 
 
-### `index.html`
+`index.html`
 
 ```html
 <!-- more -->
@@ -485,7 +470,7 @@ Rakk du ikke oppgave 2? Kjør:
 
 
 
-### `guestbooks/guestbook-service.js`
+`guestbooks/guestbook-service.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -500,7 +485,7 @@ angular.module('guestbooksModule')
 
 
 
-### `guestbooks/guestbooks-controller.js`
+`guestbooks/guestbooks-controller.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -535,14 +520,39 @@ angular.module('guestbooksModule')
 
 
 
-# Routing
+## Routing
 
-!routes.png!
+![](routes.png)
 
 - HTML5 (`/my-route`) eller hash (`/#my-route`)
 - Egen modul/JavaScript-fil `angular-route`
 
-### `guestbook-routing.js`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`guestbook-routing.js`
 
 ```javascript
 angular.module('guestbookApp')
@@ -578,7 +588,7 @@ angular.module('guestbookApp')
 
 
 
-## Oppgave 4: Innfør routing
+### Oppgave 4: Innfør routing
 
 Flytt visning av guestbook til egen template og route
 
@@ -656,7 +666,7 @@ Rakk du ikke oppgave 3? Kjør:
 
 
 
-## Oppgave 5: Innfør "entries"
+### Oppgave 5: Innfør "entries"
 
 1. Bruk gjerne mappe "entries" og modulen "entriesModule"
 2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries. Bruk URL [](/guestbook/{guestbookId}/entries)
@@ -700,7 +710,7 @@ Rakk du ikke oppgave 4? Kjør:
 - Gjerne med business-logikk
 - DOM-manipulering kan gjøres i directives
 
-### `entries/entry-directive.js`
+`entries/entry-directive.js`
 
 ```javascript
 angular.module('entriesModule')
@@ -717,7 +727,7 @@ angular.module('entriesModule')
 });
 ```
 
-### `entries/entry.html`
+`entries/entry.html`
 
 ```html
 <div>
@@ -741,7 +751,7 @@ angular.module('entriesModule')
 
 
 
-## Oppgave 6: lag "entry" som et directive
+### Oppgave 6: lag "entry" som et directive
 
 Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget
 
@@ -786,7 +796,7 @@ Rakk du ikke oppgave 5? Kjør:
 
 
 
-## Oppgave 7: Oppdater entry
+### Oppgave 7: Oppdater entry
 
 Oppdater status for entry
 
@@ -841,7 +851,7 @@ Rakk du ikke oppgave 6? Kjør:
 
 
 
-# Ekstraoppgaver
+## Ekstraoppgaver
 
 
 1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som et utgangspunkt
@@ -869,9 +879,7 @@ Rakk du ikke oppgave 6? Kjør:
 
 
 
-## Konsepter 3
-
-
+# Flere av Angulars konsepter
 
 
 Ting vi ikke rakk
