@@ -311,6 +311,28 @@ Hint/tips:
 - Enkelt å teste
 - Husk single-responsibility-principle
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### `guestbooks/guestbook-service.js`
 
 ```javascript
@@ -347,10 +369,10 @@ angular.module('guestbooksModule')
 
 ## Oppgave 2: Hent guestbooks asynkront
 
-1. Innfør en `service` til å hente data i stedet for å bruke hardkodet guestbook-array
+1. Innfør `GuestbookService` for å hente data i stedet for å bruke hardkodet guestbook-array
 2. Husk at service returnerer et _promise_
 3. Utnytt angulars `$http`-service
-4. Utnytt dependency injection til å få tak i service fra controller
+4. Utnytt dependency injection til å få tak i `GuestbookService` fra controller
 5. Sett gjerne opp mockdata, eller bruk faktisk backend
 
 Rakk du ikke oppgave 1? Kjør:
@@ -417,10 +439,13 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 ## Oppgave 3: Opprett nye guestbooks
 
-1. Utvid `index.html` med mulighet til å opprette nye guestbooks
-2. Utvid `guestbook-service` med en metode `create()` som sender til backend
-3. Konfigurer mock for POST til `/guestbook`
-4. Oppdater intern guestbook-struktur i controller ved suksess
+Utvid `index.html` med mulighet til å opprette nye guestbooks
+
+Hint:
+
+1. Utvid `GuestbookService` med en metode `create()` som sender til backend. Se "Create" i README.md
+2. Konfigurer mock for POST til `/guestbook`
+3. Oppdater intern guestbook-struktur i controller ved suksess
 
 Rakk du ikke oppgave 2? Kjør:
 
@@ -457,6 +482,9 @@ Rakk du ikke oppgave 2? Kjør:
 </form>
 <!-- more -->
 ```
+
+
+
 ### `guestbooks/guestbook-service.js`
 
 ```javascript
@@ -469,6 +497,8 @@ angular.module('guestbooksModule')
     };
 });
 ```
+
+
 
 ### `guestbooks/guestbooks-controller.js`
 
@@ -550,11 +580,13 @@ angular.module('guestbookApp')
 
 ## Oppgave 4: Innfør routing
 
+Flytt visning av guestbook til egen template og route
+
 Hint:
 
-1. Lag en template av dagens guestbook-visning, `guestbooks/guestbooks.html`
+1. Lag en template av dagens guestbook-visning: `guestbooks/guestbooks.html`
 2. Husk `<ng-view></ng-view>` i `index.html`
-3. Opprett fil `guestbook-routing.js` med routeoppsett
+3. Opprett fil `guestbook-routing.js` med routeoppsett (se over)
 
 
 Rakk du ikke oppgave 3? Kjør:
@@ -627,9 +659,11 @@ Rakk du ikke oppgave 3? Kjør:
 ## Oppgave 5: Innfør "entries"
 
 1. Bruk gjerne mappe "entries" og modulen "entriesModule"
-2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries
+2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries. Bruk URL [](/guestbook/{guestbookId}/entries)
 3. Sett gjerne opp mockdata, eller bruk faktisk backend
-4. Lag en `EntriesController` som henter entries ved hjelp av resolve via `service` du nettopp laget
+4. Konfigurer en ny route for `EntriesController`
+4. Lag `EntriesController` og inject `entries` ved hjelp av resolve
+
 5. Utvid `guestbooks.html` med en lenke for hvert element:
 
 ```html
@@ -709,7 +743,11 @@ angular.module('entriesModule')
 
 ## Oppgave 6: lag "entry" som et directive
 
-- Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget.
+Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget
+
+Hint:
+
+1. [](https://docs.angularjs.org/guide/directive)
 
 Rakk du ikke oppgave 5? Kjør:
 
@@ -750,28 +788,18 @@ Rakk du ikke oppgave 5? Kjør:
 
 ## Oppgave 7: Oppdater entry
 
-Oppdatering skjer med
+Oppdater status for entry
 
-- Utvid `entry.html` med en form. Benytt `ng-model` til å knytte entry fra directive til template.
 
-Rakk du ikke oppgave 6? Kjør:
+Hint:
 
-`git stash -u`
-`git checkout task_7`
-
-```html
-<div>
-    <form ng-submit="update()">
-        <h2>{{entry.name}}</h2>
-
-        <textarea cols="50" rows="5" ng-model="entry.message"></textarea>
-        <button type="submit">Oppdater</button>
-    </form>
-</div>
-```
-
-- Utvid `EntriesService` med en update-funksjon.
-- Eksponer en `update()` funksjon i directive som delegerer til service
+1. Oppdatering skjer med PUT til [](/guestbook/{guestBookId}/entry/{id}/{status})
+2. Utvid `entry.html` med en form
+3. Eksponer en liste over statuser fra EntryDirective
+4. Benytt `ngOptions`-directive til å vise statusene i en `<select>`.
+5. Dokumentasjon på [](https://docs.angularjs.org/api/ng/directive/ngOptions)
+6. Utvid `EntriesService` med en update-funksjon.
+7. Eksponer en `update()` funksjon i directive som delegerer til service
 
 ```javascript
 angular.module('entriesModule')
@@ -797,6 +825,15 @@ angular.module('entriesModule')
 ```
 
 
+Rakk du ikke oppgave 6? Kjør:
+
+`git stash -u`
+`git checkout task_7`
+
+
+
+
+
 
 
 
@@ -807,10 +844,9 @@ angular.module('entriesModule')
 # Ekstraoppgaver
 
 
-1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som eksempel
-2. Implementer lukking av guestbook. Se "Close" i `README.md`
-3. Implementer statusoppdatering av entry. Se "Update status for entry" i `README.md`
-4. Skriv jasmine-tester for `entry-directive.js`. Se "Testing directives" på [](https://docs.angularjs.org/guide/unit-testing)
+1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som et utgangspunkt
+2. Implementer _lukking_ av guestbook. Se "Close" i `README.md`
+3. Skriv jasmine-tester for `entry-directive.js`. Se "Testing directives" på [](https://docs.angularjs.org/guide/unit-testing)
 
 
 
@@ -843,7 +879,6 @@ Ting vi ikke rakk
 - Factory
 - Provider
 - Constant
-- Filter
 - Integrasjonstesting med Protractor
 - Animasjoner (ngAnimate)
 - Flere angular-apps på samme webside
