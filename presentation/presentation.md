@@ -12,7 +12,7 @@
 
                       # AngularJS
 
-                       2015-04-15
+                       2015-04-16
 
 
                 kris-mikael.krister@webstep.no
