@@ -8,18 +8,26 @@
 
 
 
-              # AngularJS
-
-               2015-04-15
 
 
-        kris-mikael.krister@webstep.no
+                      # AngularJS
+
+                       2015-04-15
+
+
+                kris-mikael.krister@webstep.no
+
+
+
+        git clone https://github.com/kmkr/angular-ws.git
 
 
 
 
 
-git
+
+
+
 
 
 
@@ -36,7 +44,7 @@ git
 
     0.9.0 -------- 1.0.0 -------- 1.3.15
 
-    2010            2012           2015
+    2010           2012           2015
 
 
 
@@ -109,6 +117,8 @@ git
 
 2. Controller
     ng-click
+    ng-submit
+    filters/function
 
 
 
@@ -316,7 +326,7 @@ Rakk du ikke oppgave 1? Kjør:
 ```javascript
 angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
     .run(function ($httpBackend) {
-        $httpBackend.whenGET('/guestbook').respond([
+        $httpBackend.whenGET('/guestbook/list').respond([
             {
                 id: 1,
                 name: 'My guestbook'
