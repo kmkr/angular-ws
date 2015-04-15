@@ -808,7 +808,7 @@ Hint:
 2. Utvid `entry.html` med en form
 3. Eksponer en liste over statuser fra EntryDirective
 4. Benytt `ngOptions`-directive til å vise statusene i en `<select>`.
-5. Dokumentasjon for [ngOptions] [2]
+5. Sjekk dokumentasjon for [ngOptions] [2]
 6. Utvid `EntriesService` med en update-funksjon.
 7. Eksponer en `update()` funksjon i directive som delegerer til service
 
