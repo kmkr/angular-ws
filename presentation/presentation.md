@@ -120,13 +120,9 @@
     ng-submit
     filters/function
 
-
-
-
-
-
-
-
+3. Directive
+    scope
+    template
 
 
 
@@ -179,33 +175,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Konsepter 2
-
-
-
-
-
 
 
 ## Modul
@@ -224,6 +194,27 @@ Typisk gruppering:
     ]);
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Controller
 
 - Knytning mellom view og business-logikk
@@ -232,28 +223,54 @@ Typisk gruppering:
 ## `guestbooks/guestbooks-controller.js`
 
 ```javascript
-    angular.module('guestbooksModule')
-    .controller('GuestbooksController', function () {
-        this.guestbooks = [
-            { id: 1, name: 'A guestbook' },
-            { id: 2, name: 'Another guestbook' },
-        ]
-    });
+angular.module('guestbooksModule')
+.controller('GuestbooksController', function () {
+    this.guestbooks = [
+        { id: 1, name: 'A guestbook' },
+        { id: 2, name: 'Another guestbook' },
+    ]
+});
 ```
 
-## Oppgave 1: Vis liste over guestbooks
 
-Hint:
 
-- Bruk gjerne mappe "guestbooks" og modul "guestbooksModule".
-- Husk `ng-app` i `index.html`
-- Tilgang til controller (fra `index.html`):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Oppgave 1: Vis en liste over guestbooks
+
+
+Hint/tips:
+
+1. Bruk hardkodet liste av guestbooks
+2. Eksponer via controller
+3. Lag egen modul "guestbookModule"
+4. Hver modul bør ha en egen mappe, eks: "/guestbooks"
+5. Husk `ng-app="guestbookApp"` i `index.html`
+
+6. Tilgang til controller (fra `index.html`):
+
 
 ```html
-<div ng-controller="GuestbooksController as guestbooksCtrl"></div>
+<div ng-controller="GuestbooksController as guestbooksCtrl">
+    <!-- innhold -->
+</div>
 ```
 
-- Bruk `ng-repeat` til å skrive ut navn på hver guestbook:
+
+7. Bruk `ng-repeat` til å skrive ut navn på hver guestbook:
 
 ```html
 <ul>
@@ -308,18 +325,58 @@ angular.module('guestbooksModule')
 });
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Oppgave 2: Hent guestbooks asynkront
 
-- Innfør en `service` til å hente data i stedet for å bruke hardkodet guestbook-array
-- Husk at service returnerer et promise og ikke dataen direkte
-- Utnytt angulars `$http`-service
-- Utnytt dependency injection til å få tak i service:
-- Sett gjerne opp mockdata, eller bruk faktisk backend
+1. Innfør en `service` til å hente data i stedet for å bruke hardkodet guestbook-array
+2. Husk at service returnerer et _promise_
+3. Utnytt angulars `$http`-service
+4. Utnytt dependency injection til å få tak i service fra controller
+5. Sett gjerne opp mockdata, eller bruk faktisk backend
 
 Rakk du ikke oppgave 1? Kjør:
 
 `git stash -u`
 `git checkout task_2`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### `test/mock/guestbook-app-mock.js`
 
@@ -360,15 +417,30 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 ## Oppgave 3: Opprett nye guestbooks
 
-- Utvid `index.html` med mulighet til å opprette nye guestbooks
-- Utvid `guestbook-service` med en metode `create()` som sender til backend
-- Konfigurer mock for POST til `/guestbook`
-- Oppdater intern guestbook-struktur i controller ved suksess
+1. Utvid `index.html` med mulighet til å opprette nye guestbooks
+2. Utvid `guestbook-service` med en metode `create()` som sender til backend
+3. Konfigurer mock for POST til `/guestbook`
+4. Oppdater intern guestbook-struktur i controller ved suksess
 
 Rakk du ikke oppgave 2? Kjør:
 
 `git stash -u`
 `git checkout task_3`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### `index.html`
 
@@ -459,19 +531,44 @@ angular.module('guestbookApp')
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Oppgave 4: Innfør routing
 
 Hint:
 
-- Lag en template av dagens guestbook-visning, `guestbooks/guestbooks.html`
-- Bruk i stedet `<ng-view></ng-view>` i `index.html`
-- Opprett fil `guestbook-routing.js` med routeoppsett
+1. Lag en template av dagens guestbook-visning, `guestbooks/guestbooks.html`
+2. Husk `<ng-view></ng-view>` i `index.html`
+3. Opprett fil `guestbook-routing.js` med routeoppsett
 
 
 Rakk du ikke oppgave 3? Kjør:
 
 `git stash -u`
 `git checkout task_4`
+
+
+
+
+
+
+
+
 
 
 
@@ -497,7 +594,7 @@ Rakk du ikke oppgave 3? Kjør:
     controller: 'EntriesController',
     controllerAs: 'entriesCtrl',
     resolve: {
-        entries: function (EntryService, $routeParams) {
+        entries: function (EntryService, $route) {
             return EntryService.get($route.current.params.id);
         }
     }
@@ -505,13 +602,35 @@ Rakk du ikke oppgave 3? Kjør:
 .otherwise(//...)
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Oppgave 5: Innfør "entries"
 
-- Bruk gjerne mappe "entries" og modulen "entriesModule"
-- Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries
-- Sett gjerne opp mockdata, eller bruk faktisk backend
-- Lag en `EntriesController` som henter entries ved hjelp av resolve via `service` du nettopp laget
-- Utvid `guestbooks.html` med en lenke for hvert element:
+1. Bruk gjerne mappe "entries" og modulen "entriesModule"
+2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries
+3. Sett gjerne opp mockdata, eller bruk faktisk backend
+4. Lag en `EntriesController` som henter entries ved hjelp av resolve via `service` du nettopp laget
+5. Utvid `guestbooks.html` med en lenke for hvert element:
 
 ```html
 <a ng-href="#guestbooks/{{guestbook.id}}">
@@ -574,7 +693,21 @@ angular.module('entriesModule')
 </div>
 ```
 
-## Oppgave 6: lag entry som et directive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Oppgave 6: lag "entry" som et directive
 
 - Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget.
 
@@ -616,6 +749,8 @@ Rakk du ikke oppgave 5? Kjør:
 
 
 ## Oppgave 7: Oppdater entry
+
+Oppdatering skjer med
 
 - Utvid `entry.html` med en form. Benytt `ng-model` til å knytte entry fra directive til template.
 
