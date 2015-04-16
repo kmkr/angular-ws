@@ -24,7 +24,7 @@ A browser window will be spawned and the application displayed.
 
 # Persistence
 
-The application supports both mocked (fake) and service calls to the Dropwizard backend. The latter assumes Dropwizard is available via `http://0.0.0.0:8080`. All calls to `/guestbook/*` is relayed to the backend via the proxy. Ensure you don't use host:port in your XHR/Ajax calls, as they will fail due to [cross origin errors] [5].
+The application supports both mocked (fake) and service calls to the Dropwizard backend. The latter assumes Dropwizard is available via `http://0.0.0.0:8080`. All calls to `/guestbook/*` is relayed to the backend via the proxy. Ensure you don't use host:port in your XHR/Ajax calls/urls, as they will fail due to [cross origin errors] [5]. Let the proxy handle the relay from frontend to backend.
 
 [5]: https://en.wikipedia.org/wiki/Same-origin_policy
 
