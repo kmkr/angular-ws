@@ -215,6 +215,8 @@ Examples:
 - Components that together offer feature Y
 
 ```javascript
+// /src/guestbook-app.js
+
 angular.module('guestbookApp', [
     'guestbooksModule',
     'entriesModule'
@@ -297,20 +299,28 @@ Tips:
 
 
 ```html
+<!-- /src/index.html -->
+
+<!-- more -->
 <div ng-controller="GuestbooksController as guestbooksCtrl">
     <!-- content -->
 </div>
+<!-- more -->
 ```
 
 
 10. Use `ng-repeat` to write the name of each guestbook:
 
 ```html
+<!-- /src/index.html -->
+
+<!-- more -->
 <ul>
     <li ng-repeat="guestbook in guestbooksCtrl.guestbooks">
         {{guestbook.name}}
     </li>
 </ul>
+<!-- more -->
 ```
 
 
@@ -437,9 +447,10 @@ Didn't finish task 1? Run:
 
 
 
-`test/mock/guestbook-app-mock.js`
 
 ```javascript
+// /test/mock/guestbook-app-mock.js
+
 angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
     .run(function ($httpBackend) {
         $httpBackend.whenGET('/guestbook/list').respond([
@@ -504,9 +515,10 @@ Didn't finish task 2? Run:
 
 
 
-`index.html`
 
 ```html
+<!-- /src/index.html -->
+
 <!-- more -->
 <form ng-submit="guestbooksCtrl.create()">
     <div class="form-group">
@@ -620,6 +632,8 @@ Didn't finish task 3? Run:
 Snippet from `index.html`
 
 ```html
+<!-- /src/index.html -->
+
 <body ng-app="guestbookAppMock">
     <h1>Guestbook app</h1>
     <!-- ng-view will contain the template for the current route -->
@@ -637,6 +651,8 @@ E.g.: we want to wait for "Entries" to load before the soon-to-come "EntriesCont
 
 
 ```javascript
+// /src/guestbook-routing.js
+
 // ..
 .when('/guestbooks', // ...)
 .when('/guestbooks/:id', {
@@ -672,6 +688,8 @@ Tips:
 6. Extend `guestbooks.html` with a link to the new route for each guestbook
 
 ```html
+<!-- /src/index.html -->
+
 <a ng-href="#guestbooks/{{guestbook.id}}">
     {{guestbook.name}}
 </a>
@@ -690,9 +708,10 @@ Didn't finish task 4? Run:
 - Reusable view components
 - DOM manipulation allowed
 
-`entries/entry-directive.js`
 
 ```javascript
+// /src/entries/entry-directive.js`
+
 angular.module('entriesModule')
 .directive('entry', function () {
     return {
@@ -707,9 +726,10 @@ angular.module('entriesModule')
 });
 ```
 
-`entries/entry.html`
 
 ```html
+<!-- /src/entries/entry.html -->
+
 <div>
     <h2>{{entry.name}}</h2>
 
@@ -734,6 +754,8 @@ Didn't finish task 5? Run:
 `git checkout task_6`
 
 ```html
+<!-- /src/entries/entries.html -->
+
 <ul>
     <li ng-repeat="entry in entriesController.entries">
         <div entry="entry"></entry>
@@ -785,6 +807,8 @@ Tips:
 [2]: https://docs.angularjs.org/api/ng/directive/ngOptions
 
 ```javascript
+// /src/entries/entry-directive.js
+
 angular.module('entriesModule')
 .directive('entry', function (EntriesService) {
     return {
