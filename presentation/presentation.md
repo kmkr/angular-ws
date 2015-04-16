@@ -815,7 +815,7 @@ Didn't finish task 6? Run:
 
 1. Write Jasmine-tests for `guestbook-service.js`, use `guestbook-app-test.js` as an example
 2. Implement _closing_ of guestbooks. See "Close" in `README.md`
-3. Write Jasmine-tests for `entry-directive.js`. See "Testing directives" in [Angular's documentation for unit testing] [3]
+3. Write Jasmine-tests for `entry-directive.js`. See "Testing directives" in [Angular's documentation for unit testing] [3]. Use `grunt dev` instead of `grunt serve` while writing tests. The tests will automatically run on save.
 
 [3]: https://docs.angularjs.org/guide/unit-testing
 
