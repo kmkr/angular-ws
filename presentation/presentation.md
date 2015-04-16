@@ -6,16 +6,16 @@
 
 
 
-                      # AngularJS
+                       Angular JS
 
-                       2015-04-16
-
-
-                kris-mikael.krister@webstep.no
+                       2015-04-16
 
 
+             kris-mikael.krister@webstep.no
 
-        git clone https://github.com/kmkr/angular-ws.git
+
+
+    git clone https://github.com/kmkr/angular-ws.git
 
 
 
@@ -61,9 +61,9 @@
 
 # Historie
 
-    0.9.0 -------- 1.0.0 -------- 1.3.15
+     0.9.0 -------- 1.0.0 -------- 1.3.15
 
-    2010           2012           2015
+     2010           2012           2015
 
 
 
