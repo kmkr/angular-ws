@@ -6,10 +6,6 @@
 
 
 
-
-
-
-
                       # AngularJS
 
                        2015-04-16
@@ -26,6 +22,29 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+# Agenda
+
+- Historie
+- Oversikt over Angulars konsepter
+- Kodeeksempler
+- Hands-on (guestbook-klient)
+    - Module
+    - Controller
+    - Service
+    - Routing
+    * Directive
+    * Unit testing med Karma og Jasmine
+- Angular 2.x
 
 
 
@@ -76,10 +95,10 @@
 - Rammeverk for single-page webapps
 - MV*
 - Two-way databinding via _scopes_
-- Ajax-abstraksjon (`$http`)
-- Routing
 - Templating med _expressions_
 - Dependency injection
+- Ajax-abstraksjon (`$http`)
+- Routing
 
 
 
@@ -111,16 +130,20 @@
 
 1. Expressions
     - forgiving
-    - filters/ng-model
+    - filters/string og ng-model
     - context
     - ingen loops/exceptions
 
 2. Controller
+    - scope
     - ng-click
     - ng-submit
     - filters/function
 
-3. Directive
+3. Service
+    - dependency injection
+
+4. Directive
     - scope
     - template
 
@@ -149,6 +172,33 @@
 # Guestbook-klient
 
 ![](arkitektur.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Modul
 
@@ -224,17 +274,18 @@ angular.module('guestbooksModule')
 
 ### Oppgave 1: Guestbook-liste
 
-Vis en liste over guestbooks
+Vis en liste av guestbooks
 
 Hint/tips:
 
-1. Bruk hardkodet liste av guestbooks
-2. Eksponer liste via controller
-3. Bruk ny modul "guestbookModule"
-4. Hver modul bør ha en egen mappe, eks: "/guestbooks"
+1. Bruk ny modul "guestbookModule"
+2. Hver modul bør ha en egen mappe, eks: "/guestbooks"
+3. Bruk hardkodet array med guestbooks
+4. Eksponer liste til template fra controller
 5. Husk `ng-app="guestbookApp"` i `index.html`
+6. Husk å legge på avhengighet til "guestbookModule" fra "guestbookApp"
 
-6. Tilgang til controller (fra `index.html`):
+7. HTML-snippet fra `index.html`:
 
 
 ```html
@@ -343,11 +394,12 @@ angular.module('guestbooksModule')
 
 ### Oppgave 2: Hent guestbooks asynkront
 
-1. Innfør `GuestbookService` for å hente data i stedet for å bruke hardkodet guestbook-array
-2. Husk at service returnerer et _promise_
-3. Utnytt angulars `$http`-service
-4. Utnytt dependency injection til å få tak i `GuestbookService` fra controller
-5. Sett gjerne opp mockdata, eller bruk faktisk backend
+1. Innfør `GuestbookService` til å hente data (i stedet for hardkodet array)
+2. Utnytt angulars `$http`-service
+3. Utnytt dependency injection til å få tak i `GuestbookService` fra controller
+4. Husk at service returnerer et _promise_
+5. Velg selv om du bruker mockdata eller backend
+6. Hvis du bruker mockdata må du endre `ng-app`
 
 Rakk du ikke oppgave 1? Kjør:
 
@@ -422,11 +474,11 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 ### Oppgave 3: Opprett nye guestbooks
 
-Utvid `index.html` med mulighet til å opprette nye guestbooks
+Implementer mulighet til å opprette nye guestbooks
 
 Hint:
 
-1. Bruk et vanlig HTML-form med `ng-submit`
+1. Bruk et vanlig HTML-form i `index.html` med `ng-submit`
 2. Husk `<button type="submit">My button</button>`
 3. Utvid `GuestbookService` med en metode `create()` som sender til backend. Se "Create" i README.md
 4. Konfigurer mock for POST til `/guestbook`
