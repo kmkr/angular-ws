@@ -334,7 +334,7 @@ Hint/tips:
 
 - View-uavhengig business-logikk
 - Enkelt å teste
-- Husk single-responsibility-principle
+- Gjør det lettere å følge single-responsibility-principle
 
 
 
