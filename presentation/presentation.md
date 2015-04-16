@@ -284,7 +284,7 @@ Show a list of guestbooks
 Tips:
 
 1. Use new module "guestbookModule"
-2. Create a separate file for the module definition, `guestbook-module.js` _with_ its only content being the module definition `angular.module('guestbookModule', []);` The grunt inject task will then order the fils in the correct order in `index.html`
+2. Create a separate file for the module definition, `guestbook-module.js` _with_ its only content being the module definition `angular.module('guestbookModule', []);` Place the .js files somewhere under the "/src" folder and the grunt inject task will add the files, in correct order, to `index.html` as you create/delete them.
 3. Create a separate file for the controller, `guestbooks-controller.js`.
 4. Each module should use a separate folder. Example: "/guestbooks"
 5. For now, use a hardcoded array (list of guestbooks)
