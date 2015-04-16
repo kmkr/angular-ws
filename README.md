@@ -1,11 +1,17 @@
-This repository contains a skeleton for the frontend module of the guestbook application. [AngularJS](angularjs.org) is used as main JavaScript framework, [Bootstrap](http://getbootstrap.com/) for styling, and [Grunt](http://gruntjs.com/) to assist development and run tests.
+This repository contains a skeleton for the frontend module of the guestbook application. [AngularJS] [1] is used as main JavaScript framework, [Bootstrap] [2] for styling, and [Grunt] [3] to assist development and run tests.
+
+[1]: https://www.angularjs.org
+[2]: http://getbootstrap.com/
+[3]: http://gruntjs.com/
 
 # Prerequisites
 
-* [nodejs](https://nodejs.org/) installed
+* [nodejs] [4] installed
 * grunt-cli installed (run `npm install grunt-cli`)
 * Any text editor
 * A browser ready for debugging JavaScript. Chrome out of the box, or Firefox with Firebug installed.
+
+[4]: https://nodejs.org/
 
 # Running the webapp
 
@@ -18,7 +24,9 @@ A browser window will be spawned and the application displayed.
 
 # Persistence
 
-The application supports both mocked (fake) and service calls to the Dropwizard backend. The latter assumes Dropwizard is available via `http://0.0.0.0:8080`.
+The application supports both mocked (fake) and service calls to the Dropwizard backend. The latter assumes Dropwizard is available via `http://0.0.0.0:8080`. All calls to `/guestbook/*` is relayed to the backend via the proxy. Ensure you don't use host:port in your XHR/Ajax calls, as they will fail due to [cross origin errors] [5].
+
+[5]: https://en.wikipedia.org/wiki/Same-origin_policy
 
 # Running tests
 
