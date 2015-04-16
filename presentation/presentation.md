@@ -14,11 +14,14 @@
              kris-mikael.krister@webstep.no
 
 
+- git clone https://github.com/kmkr/angular-ws.git
+- git pull origin master (if your cloned repo is old)
+- Install nodejs
+- Run "npm install -g grunt-cli" (in a shell, cmd, prompt)
+- Run "npm install" in "angular-ws" folder
+- Run "grunt serve" in folder "angular-ws"
+- Optional: run guestbook-backend (dropwizard)
 
-    1) git clone https://github.com/kmkr/angular-ws.git
-    2) Install nodejs
-    3) Run "npm install -g grunt-cli" (in a shell, cmd, prompt)
-    4) Run "grunt serve" in folder "angular-ws"
 
 
 
