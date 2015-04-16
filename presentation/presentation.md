@@ -248,9 +248,10 @@ angular.module('guestbookApp', [
 - No DOM-manipulation allowed
 
 
-`/src/guestbooks/guestbooks-controller.js`
 
 ```javascript
+// /src/guestbooks/guestbooks-controller.js
+
 angular.module('guestbooksModule')
 .controller('GuestbooksController', function () {
     this.guestbooks = [
@@ -365,9 +366,10 @@ Tips:
 
 
 
-`/src/guestbooks/guestbook-service.js`
 
 ```javascript
+// /src/guestbooks/guestbook-service.js
+
 angular.module('guestbooksModule')
 .service('GuestbookService', function ($http) {
     this.get = function () {
@@ -521,9 +523,10 @@ Didn't finish task 2? Run:
 
 
 
-`/src/guestbooks/guestbook-service.js`
 
 ```javascript
+// /src/guestbooks/guestbook-service.js
+
 angular.module('guestbooksModule')
 .service('GuestbookService', function ($http) {
     this.get = // ... as previous
@@ -537,9 +540,9 @@ angular.module('guestbooksModule')
 
 
 
-`/src/guestbooks/guestbooks-controller.js`
-
 ```javascript
+// /src/guestbooks/guestbooks-controller.js
+
 angular.module('guestbooksModule')
 .controller('GuestbooksController', function (GuestbookService) {
     var ctrl = this;
@@ -576,9 +579,10 @@ Routing allow splitting a single-page webapp into entirely different views, with
 
 
 
-`src/guestbook-routing.js`
 
 ```javascript
+// /src/guestbook-routing.js
+
 angular.module('guestbookApp')
 .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
