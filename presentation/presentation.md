@@ -406,9 +406,10 @@ angular.module('guestbooksModule')
 2. Use Angular's `$http`-service to fetch data (instead of hardcoded array)
 3. Use dependency injection to get the `GuestbookService` instance from the controller
 4. Don't forget that the async service methods returns a _promise_
-5. You can choose whether to use mock data or a backend
-6. You will have to change `ng-app` if you're using mock data:
-    - `ng-app="guestbookAppMock"`
+5. You can choose whether to use mock data or the dropwizard backend
+    - You will have to change `ng-app` if you're using mock data: `ng-app="guestbookAppMock"`
+    - A proxy is configured to relay all calls to "/guestbook/*" to http://0.0.0.0:8080 , so if you're using a backend, ensure it's accessible from that location.
+    - Do _not_ include host:port in the calls to the backend, you will get a cross-origin error.
 
 Didn't finish task 1? Run:
 
@@ -491,7 +492,7 @@ Hint:
 2. Use `ng-submit` on the <form> element
 3. Use `<button type="submit">My button</button>`
 4. Extend `GuestbookService` with a method `create(guestbook)` that accepts a guestbook as input and sends data. See "Create" in README.md for details.
-5. You can choose whether to use mock data or a backend. URI is POST: '/guestbook'
+5. You can choose whether to use mock data or the dropwizard backend. URI is POST: '/guestbook'
 6. Update guestbook array in controller on success
 
 Didn't finish task 2? Run:
@@ -662,7 +663,7 @@ Tips:
 
 1. Use folder "entries" and module "entriesModule"
 2. Create a `EntryService` to fetch entries
-3. You can choose whether to use mock data or a backend. URI is: `/guestbook/{guestbookId}/entries`
+3. You can choose whether to use mock data or the dropwizard backend. URI is: `/guestbook/{guestbookId}/entries`
 4. Configure a new route for `EntriesController`
 5. Create `EntriesController` and inject `entries` by using `resolve`
 6. Extend `guestbooks.html` with a link to the new route for each guestbook
