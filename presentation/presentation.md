@@ -211,8 +211,8 @@ A module is a collection of components
 
 Examples:
 
-- Components that, together, solve problem X
-- Components that, together, offer feature Y
+- Components that together solve problem X
+- Components that together offer feature Y
 
 ```javascript
 angular.module('guestbookApp', [
