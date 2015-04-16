@@ -6,20 +6,19 @@
 
 
 
-                       Angular JS
+#                      Angular JS
 
-                       2015-04-16
-
-
-             kris-mikael.krister@webstep.no
+##                      2015-04-16
 
 
-- git clone https://github.com/kmkr/angular-ws.git
-- git pull origin master (if your cloned repo is old)
-- Install nodejs
-- Run "npm install -g grunt-cli" (in a shell, cmd, prompt)
-- Run "npm install" in "angular-ws" folder
-- Run "grunt serve" in folder "angular-ws"
+            kris-mikael.krister@webstep.no
+
+
+- `git clone https://github.com/kmkr/angular-ws.git`
+- Install [nodejs](https://nodejs.org/)
+- Run `npm install -g grunt-cli` (in a shell, cmd, prompt)
+- Run `npm install` in "angular-ws" folder
+- Run `grunt serve` in folder "angular-ws"
 - Optional: run guestbook-backend (dropwizard)
 
 
