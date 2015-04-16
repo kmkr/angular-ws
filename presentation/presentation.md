@@ -208,7 +208,7 @@
 
 ## Module
 
-Collection of components
+A module is a collection of components
 
 Examples:
 
@@ -249,7 +249,7 @@ angular.module('guestbookApp', [
 - No DOM-manipulation allowed
 
 
-`guestbooks/guestbooks-controller.js`
+`/src/guestbooks/guestbooks-controller.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -285,13 +285,15 @@ Show a list of guestbooks
 Tips:
 
 1. Use new module "guestbookModule"
-2. Each module should use a separate folder. Example: "/guestbooks"
-3. For now, use a hardcoded array (list of guestbooks)
-4. Expose the array to the template from the controller
-5. Remember `ng-app="guestbookApp"` in `index.html`
-6. Remember adding dependency "guestbookModule" to "guestbookApp"
+2. Create a separate file for the module definition, `guestbook-module.js` _with_ its only content being the module definition `angular.module('guestbookModule', []);` The grunt inject task will then order the fils in the correct order in `index.html`
+3. Create a separate file for the controller, `guestbooks-controller.js`.
+4. Each module should use a separate folder. Example: "/guestbooks"
+5. For now, use a hardcoded array (list of guestbooks)
+6. Expose the array to the template from the controller
+7. Remember `ng-app="guestbookApp"` in `index.html`
+8. Remember adding dependency "guestbookModule" to "guestbookApp"
 
-7. HTML-snippet from `index.html`:
+9. HTML-snippet from `index.html`:
 
 
 ```html
@@ -301,7 +303,7 @@ Tips:
 ```
 
 
-7. Use `ng-repeat` to write the name of each guestbook:
+10. Use `ng-repeat` to write the name of each guestbook:
 
 ```html
 <ul>
@@ -364,7 +366,7 @@ Tips:
 
 
 
-`guestbooks/guestbook-service.js`
+`/src/guestbooks/guestbook-service.js`
 
 ```javascript
 angular.module('guestbooksModule')
@@ -486,9 +488,9 @@ Create new guestbooks from the view
 Hint:
 
 1. Use the HTML <form> element in `index.html`
-2. Use `ng-submit`
-3. Remember `<button type="submit">My button</button>`
-4. Extend `GuestbookService` with a method `create()` that sends data. See "Create" in README.md for details.
+2. Use `ng-submit` on the <form> element
+3. Use `<button type="submit">My button</button>`
+4. Extend `GuestbookService` with a method `create(guestbook)` that accepts a guestbook as input and sends data. See "Create" in README.md for details.
 5. You can choose whether to use mock data or a backend. URI is POST: '/guestbook'
 6. Update guestbook array in controller on success
 
@@ -496,18 +498,6 @@ Didn't finish task 2? Run:
 
 `git stash -u`
 `git checkout task_3`
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -520,6 +510,7 @@ Didn't finish task 2? Run:
     <div class="form-group">
         <label>
             Name
+            <!-- notice the ng-module attribute -->
             <input ng-model="guestbooksCtrl.newGuestbook.name" />
         </label>
     </div>
@@ -530,13 +521,14 @@ Didn't finish task 2? Run:
 
 
 
-`guestbooks/guestbook-service.js`
+`/src/guestbooks/guestbook-service.js`
 
 ```javascript
 angular.module('guestbooksModule')
 .service('GuestbookService', function ($http) {
-    this.get = // ...
+    this.get = // ... as previous
 
+    // New method
     this.create = function (guestbook) {
         return $http.post('/guestbook', guestbook);
     };
@@ -545,19 +537,25 @@ angular.module('guestbooksModule')
 
 
 
-`guestbooks/guestbooks-controller.js`
+`/src/guestbooks/guestbooks-controller.js`
 
 ```javascript
 angular.module('guestbooksModule')
 .controller('GuestbooksController', function (GuestbookService) {
     var ctrl = this;
+    ctrl.guestbooks = [];
 
-    // ...
+    GuestbookService.get().then(function (response) {
+        ctrl.guestbooks = reponse.data;
+    })
 
     this.create = function () {
+        // delegate to service. notice the reference to ctrl.newGuestbook
         GuestbookService.create(ctrl.newGuestbook)
             .then(function () {
+                // Add the newly created guestbook to the controller's data structure
                 ctrl.guestbooks.push(ctrl.newGuestbook);
+                // Clear the view model
                 delete ctrl.newGuestbook;
             });
     };
@@ -567,51 +565,18 @@ angular.module('guestbooksModule')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Routing
+
+Routing allow splitting a single-page webapp into entirely different views, without causing a page refresh.
 
 ![](routes.png)
 
-- HTML5 mode (`/my-route`) or hash (`/#my-route`)
-- Own module/JavaScript file `angular-route` (already included in `index.html`)
+- Supports HTML5 mode (`/guestbook`) or hash (`/#guestbooks`)
+- Requires separate module/JavaScript file `angular-route` (already included in `index.html`)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-`guestbook-routing.js`
+`src/guestbook-routing.js`
 
 ```javascript
 angular.module('guestbookApp')
@@ -631,30 +596,14 @@ angular.module('guestbookApp')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Task 4: Use routing
 
-Move guestbook view to own template and route
+Move the guestbook view to separate template and create a route
 
 Tips:
 
 1. Create a template of the guestbook view in `guestbooks/guestbooks.html`
-2. Remember `<ng-view></ng-view>` i `index.html`
+2. Use `<ng-view></ng-view>` i `index.html`
 3. Create file `guestbook-routing.js` with route config (see above)
 
 
@@ -664,27 +613,23 @@ Didn't finish task 3? Run:
 `git checkout task_4`
 
 
+Snippet from `index.html`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```html
+<body ng-app="guestbookAppMock">
+    <h1>Guestbook app</h1>
+    <!-- ng-view will contain the template for the current route -->
+    <ng-view></ng-view>
+</body>
+```
 
 
 
 ## Routing 2 - resolving data
+
+Resolves in routes allow data to be fetched _before_ the controller loads.
+
+E.g.: we want to wait for "Entries" to load before the soon-to-come "EntriesController" loads:
 
 
 ```javascript
@@ -695,7 +640,10 @@ Didn't finish task 3? Run:
     controller: 'EntriesController',
     controllerAs: 'entriesCtrl',
     resolve: {
+        // Will wait for the promise to resolve
         entries: function (EntryService, $route) {
+            // params.id is fetched from the url
+            // e.g. /#guestbooks/1 will resolve to id=1
             return EntryService.get($route.current.params.id);
         }
     }
@@ -706,34 +654,18 @@ Didn't finish task 3? Run:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Task 5: Implement "entries"
 
+A guestbook contains entries. Create the "entries"-view, controller and route.
+
+Tips:
+
 1. Use folder "entries" and module "entriesModule"
-2. Entries are connected to a guestbook instance, create a `service` to fetch entries
+2. Create a `EntryService` to fetch entries
 3. You can choose whether to use mock data or a backend. URI is: `/guestbook/{guestbookId}/entries`
 4. Configure a new route for `EntriesController`
 5. Create `EntriesController` and inject `entries` by using `resolve`
-
-6. Extend `guestbooks.html` with a link for each guestbook
+6. Extend `guestbooks.html` with a link to the new route for each guestbook
 
 ```html
 <a ng-href="#guestbooks/{{guestbook.id}}">
@@ -746,20 +678,6 @@ Didn't finish task 4? Run:
 
 `git stash -u`
 `git checkout task_5`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -797,21 +715,9 @@ angular.module('entriesModule')
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ### Task 6: "Entry" as a directive
 
-An entry contains a "name" and a "message". Create a directive to show an entry. Print each entry.
+An entry contains a "name" and a "message". Create a directive to show an entry. Print name and message in the directive template.
 
 Tip:
 
@@ -858,7 +764,7 @@ Didn't finish task 5? Run:
 
 ### Task 7: Update entry
 
-Update status for an entry through the view
+Implement updating of entry status
 
 
 Tips:
@@ -870,7 +776,7 @@ Tips:
 5. Check out the documentation for [ngOptions] [2]
 6. Extend `EntriesService` with an update method
 7. Expose an `update()` function in the directive that delegates to the service
-8. Call `update()` via a form `<button>`
+8. Call `update()` via a form `<button ng-click="update()">Update</button>`
 
 [2]: https://docs.angularjs.org/api/ng/directive/ngOptions
 
@@ -904,16 +810,6 @@ Didn't finish task 6? Run:
 `git checkout task_7`
 
 
-
-
-
-
-
-
-
-
-
-
 ## Additional tasks
 
 
@@ -922,18 +818,6 @@ Didn't finish task 6? Run:
 3. Write Jasmine-tests for `entry-directive.js`. See "Testing directives" in [Angular's documentation for unit testing] [3]
 
 [3]: https://docs.angularjs.org/guide/unit-testing
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -959,13 +843,6 @@ Didn't finish task 6? Run:
 
 
 
-
-
-
-
-
-
-
 # Angular's future
 
 Angular 2
@@ -975,8 +852,6 @@ Angular 2
 - Performance improvements
 - Improved routing
 - Modularization
-
-
 
 
 
