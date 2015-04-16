@@ -15,7 +15,10 @@
 
 
 
-    git clone https://github.com/kmkr/angular-ws.git
+    1) git clone https://github.com/kmkr/angular-ws.git
+    2) Install nodejs
+    3) Run "npm install -g grunt-cli" (in a shell, cmd, prompt)
+    4) Run "grunt serve" in folder "angular-ws"
 
 
 
@@ -34,16 +37,16 @@
 
 # Agenda
 
-- Historie
-- Oversikt over Angulars konsepter
-- Kodeeksempler
-- Hands-on (guestbook-klient)
+- History
+- Overview of the concepts in Angular
+- Code examples
+- Hands-on (guestbook-client)
     - Module
     - Controller
     - Service
     - Routing
     * Directive
-    * Unit testing med Karma og Jasmine
+    * Unit testing with Karma and Jasmine
 - Angular 2.x
 
 
@@ -59,7 +62,7 @@
 
 
 
-# Historie
+# History
 
      0.9.0 -------- 1.0.0 -------- 1.3.15
 
@@ -92,12 +95,12 @@
 
 # Angular
 
-- Rammeverk for single-page webapps
+- Framework for building Single-page webapps
 - MV*
 - Two-way databinding via _scopes_
-- Templating med _expressions_
+- Templating with _expressions_
 - Dependency injection
-- Ajax-abstraksjon (`$http`)
+- Ajax-abstraction (`$http`)
 - Routing
 
 
@@ -126,13 +129,13 @@
 
 
 
-# Angular kodeeksempler
+# Angular code examples
 
 1. Expressions
     - forgiving
     - filters/string og ng-model
     - context
-    - ingen loops/exceptions
+    - no loops/exceptions allowed
 
 2. Controller
     - scope
@@ -169,11 +172,9 @@
 
 
 
-# Guestbook-klient
+# Guestbook-client
 
-![](arkitektur.png)
-
-
+![](architecture.png)
 
 
 
@@ -200,14 +201,16 @@
 
 
 
-## Modul
 
-Gruppering av komponenter
 
-Typisk gruppering:
+## Module
 
-- Komponenter som tilsammen løser problem X
-- Komponenter som tilbyr feature Y
+Collection of components
+
+Examples:
+
+- Components that, together, solve problem X
+- Components that, together, offer feature Y
 
 ```javascript
 angular.module('guestbookApp', [
@@ -239,8 +242,8 @@ angular.module('guestbookApp', [
 
 ## Controller
 
-- Knytning mellom view og business-logikk
-- Ingen DOM-manipulering i controllers
+- Connects view and business logic
+- No DOM-manipulation allowed
 
 
 `guestbooks/guestbooks-controller.js`
@@ -272,30 +275,30 @@ angular.module('guestbooksModule')
 
 
 
-### Oppgave 1: Guestbook-liste
+### Task 1: List guestbooks
 
-Vis en liste av guestbooks
+Show a list of guestbooks
 
-Hint/tips:
+Tips:
 
-1. Bruk ny modul "guestbookModule"
-2. Hver modul bør ha en egen mappe, eks: "/guestbooks"
-3. Bruk hardkodet array med guestbooks
-4. Eksponer liste til template fra controller
-5. Husk `ng-app="guestbookApp"` i `index.html`
-6. Husk å legge på avhengighet til "guestbookModule" fra "guestbookApp"
+1. Use new module "guestbookModule"
+2. Each module should use a separate folder. Example: "/guestbooks"
+3. For now, use a hardcoded array (list of guestbooks)
+4. Expose the array to the template from the controller
+5. Remember `ng-app="guestbookApp"` in `index.html`
+6. Remember adding dependency "guestbookModule" to "guestbookApp"
 
-7. HTML-snippet fra `index.html`:
+7. HTML-snippet from `index.html`:
 
 
 ```html
 <div ng-controller="GuestbooksController as guestbooksCtrl">
-    <!-- innhold -->
+    <!-- content -->
 </div>
 ```
 
 
-7. Bruk `ng-repeat` til å skrive ut navn på hver guestbook:
+7. Use `ng-repeat` to write the name of each guestbook:
 
 ```html
 <ul>
@@ -332,9 +335,9 @@ Hint/tips:
 
 ## Service
 
-- View-uavhengig business-logikk
-- Enkelt å teste
-- Gjør det lettere å følge single-responsibility-principle
+- View-independent business logic
+- Testable
+- Reusable
 
 
 
@@ -392,16 +395,17 @@ angular.module('guestbooksModule')
 
 
 
-### Oppgave 2: Hent guestbooks asynkront
+### Task 2: Fetch guestbooks asynchronously
 
-1. Innfør `GuestbookService` til å hente data (i stedet for hardkodet array)
-2. Utnytt angulars `$http`-service
-3. Utnytt dependency injection til å få tak i `GuestbookService` fra controller
-4. Husk at service returnerer et _promise_
-5. Velg selv om du bruker mockdata eller backend
-6. Hvis du bruker mockdata må du endre `ng-app`
+1. Add a `GuestbookService`
+2. Use Angular's `$http`-service to fetch data (instead of hardcoded array)
+3. Use dependency injection to get the `GuestbookService` instance from the controller
+4. Don't forget that the async service methods returns a _promise_
+5. You can choose whether to use mock data or a backend
+6. You will have to change `ng-app` if you're using mock data:
+    - `ng-app="guestbookAppMock"`
 
-Rakk du ikke oppgave 1? Kjør:
+Didn't finish task 1? Run:
 
 `git stash -u`
 `git checkout task_2`
@@ -472,19 +476,20 @@ angular.module('guestbookAppMock', ['guestbookApp', 'ngMockE2E'])
 
 
 
-### Oppgave 3: Opprett nye guestbooks
+### Task 3: Create new guestbooks
 
-Implementer mulighet til å opprette nye guestbooks
+Create new guestbooks from the view
 
 Hint:
 
-1. Bruk et vanlig HTML-form i `index.html` med `ng-submit`
-2. Husk `<button type="submit">My button</button>`
-3. Utvid `GuestbookService` med en metode `create()` som sender til backend. Se "Create" i README.md
-4. Konfigurer mock for POST til `/guestbook`
-5. Oppdater intern guestbook-struktur i controller ved suksess
+1. Use the HTML <form> element in `index.html`
+2. Use `ng-submit`
+3. Remember `<button type="submit">My button</button>`
+4. Extend `GuestbookService` with a method `create()` that sends data. See "Create" in README.md for details.
+5. You can choose whether to use mock data or a backend. URI is POST: '/guestbook'
+6. Update guestbook array in controller on success
 
-Rakk du ikke oppgave 2? Kjør:
+Didn't finish task 2? Run:
 
 `git stash -u`
 `git checkout task_3`
@@ -511,11 +516,11 @@ Rakk du ikke oppgave 2? Kjør:
 <form ng-submit="guestbooksCtrl.create()">
     <div class="form-group">
         <label>
-            Navn
+            Name
             <input ng-model="guestbooksCtrl.newGuestbook.name" />
         </label>
     </div>
-    <button type="submit">Opprett</button>
+    <button type="submit">Create</button>
 </form>
 <!-- more -->
 ```
@@ -576,9 +581,8 @@ angular.module('guestbooksModule')
 
 ![](routes.png)
 
-- HTML5 (`/my-route`) eller hash (`/#my-route`)
-- Egen modul/JavaScript-fil `angular-route`
-
+- HTML5 mode (`/my-route`) or hash (`/#my-route`)
+- Own module/JavaScript file `angular-route` (already included in `index.html`)
 
 
 
@@ -640,18 +644,18 @@ angular.module('guestbookApp')
 
 
 
-### Oppgave 4: Innfør routing
+### Task 4: Use routing
 
-Flytt visning av guestbook til egen template og route
+Move guestbook view to own template and route
 
-Hint:
+Tips:
 
-1. Lag en template av dagens guestbook-visning: `guestbooks/guestbooks.html`
-2. Husk `<ng-view></ng-view>` i `index.html`
-3. Opprett fil `guestbook-routing.js` med routeoppsett (se over)
+1. Create a template of the guestbook view in `guestbooks/guestbooks.html`
+2. Remember `<ng-view></ng-view>` i `index.html`
+3. Create file `guestbook-routing.js` with route config (see above)
 
 
-Rakk du ikke oppgave 3? Kjør:
+Didn't finish task 3? Run:
 
 `git stash -u`
 `git checkout task_4`
@@ -718,15 +722,15 @@ Rakk du ikke oppgave 3? Kjør:
 
 
 
-### Oppgave 5: Innfør "entries"
+### Task 5: Implement "entries"
 
-1. Bruk gjerne mappe "entries" og modulen "entriesModule"
-2. Entries er tilknyttet en guestbook-instans, lag en `service` for å hente entries. Bruk URI: `/guestbook/{guestbookId}/entries`
-3. Sett gjerne opp mockdata, eller bruk faktisk backend
-4. Konfigurer en ny route for `EntriesController`
-4. Lag `EntriesController` og inject `entries` ved hjelp av resolve
+1. Use folder "entries" and module "entriesModule"
+2. Entries are connected to a guestbook instance, create a `service` to fetch entries
+3. You can choose whether to use mock data or a backend. URI is: `/guestbook/{guestbookId}/entries`
+4. Configure a new route for `EntriesController`
+5. Create `EntriesController` and inject `entries` by using `resolve`
 
-5. Utvid `guestbooks.html` med en lenke for hvert element:
+6. Extend `guestbooks.html` with a link for each guestbook
 
 ```html
 <a ng-href="#guestbooks/{{guestbook.id}}">
@@ -735,7 +739,7 @@ Rakk du ikke oppgave 3? Kjør:
 ```
 
 
-Rakk du ikke oppgave 4? Kjør:
+Didn't finish task 4? Run:
 
 `git stash -u`
 `git checkout task_5`
@@ -758,9 +762,8 @@ Rakk du ikke oppgave 4? Kjør:
 
 ## Directive
 
-- Gjenbrukbare view-komponenter
-- Gjerne med business-logikk
-- DOM-manipulering kan gjøres i directives
+- Reusable view components
+- DOM manipulation allowed
 
 `entries/entry-directive.js`
 
@@ -803,15 +806,16 @@ angular.module('entriesModule')
 
 
 
-### Oppgave 6: Lag "entry" som et directive
+### Task 6: "Entry" as a directive
 
-Vis "name" og "message" for hver entry ved hjelp av `directive` du nettopp laget
+An entry contains a "name" and a "message". Create a directive to show an entry. Print each entry.
 
-Hint:
+Tip:
 
-1. Sjekk [dokumentasjon for directive] [1]
+1. Use `ng-repeat` to loop over entries.
+2. Check out [the directive documentation] [1]
 
-Rakk du ikke oppgave 5? Kjør:
+Didn't finish task 5? Run:
 
 `git stash -u`
 `git checkout task_6`
@@ -849,20 +853,21 @@ Rakk du ikke oppgave 5? Kjør:
 
 
 
-### Oppgave 7: Oppdater entry
+### Task 7: Update entry
 
-Oppdater status for entry
+Update status for an entry through the view
 
 
-Hint:
+Tips:
 
-1. Oppdatering skjer med PUT til URI `/guestbook/{guestBookId}/entry/{id}/{status}`
-2. Utvid `entry.html` med en form
-3. Eksponer en liste over statuser fra EntryDirective
-4. Benytt `ngOptions`-directive til å vise statusene i en `<select>`.
-5. Sjekk dokumentasjon for [ngOptions] [2]
-6. Utvid `EntriesService` med en update-funksjon.
-7. Eksponer en `update()` funksjon i directive som delegerer til service
+1. Updates via PUT to URI `/guestbook/{guestBookId}/entry/{id}/{status}`
+2. Extend `entry.html` with a form
+3. Expose a list of status options from EntryDirective
+4. Use the `ngOptions` directive to show the status options
+5. Check out the documentation for [ngOptions] [2]
+6. Extend `EntriesService` with an update method
+7. Expose an `update()` function in the directive that delegates to the service
+8. Call `update()` via a form `<button>`
 
 [2]: https://docs.angularjs.org/api/ng/directive/ngOptions
 
@@ -890,7 +895,7 @@ angular.module('entriesModule')
 ```
 
 
-Rakk du ikke oppgave 6? Kjør:
+Didn't finish task 6? Run:
 
 `git stash -u`
 `git checkout task_7`
@@ -906,12 +911,12 @@ Rakk du ikke oppgave 6? Kjør:
 
 
 
-## Ekstraoppgaver
+## Additional tasks
 
 
-1. Skriv jasmine-tester for `guestbook-service.js`, bruk `guestbook-app-test.js` som et utgangspunkt
-2. Implementer _lukking_ av guestbook. Se "Close" i `README.md`
-3. Skriv jasmine-tester for `entry-directive.js`. Se "Testing directives" i [Angulars dokumentasjon om unit testing] [3]
+1. Write Jasmine-tests for `guestbook-service.js`, use `guestbook-app-test.js` as an example
+2. Implement _closing_ of guestbooks. See "Close" in `README.md`
+3. Write Jasmine-tests for `entry-directive.js`. See "Testing directives" in [Angular's documentation for unit testing] [3]
 
 [3]: https://docs.angularjs.org/guide/unit-testing
 
@@ -936,17 +941,14 @@ Rakk du ikke oppgave 6? Kjør:
 
 
 
-# Flere av Angulars konsepter
-
-
-Ting vi ikke rakk
+# More of Angular's concepts
 
 - Factory
 - Provider
 - Constant
-- Integrasjonstesting med Protractor
-- Animasjoner (ngAnimate)
-- Flere angular-apps på samme webside
+- Integration testing with Protractor
+- Animations (ngAnimate)
+- Multiple Angular apps on the same site
 - I18n (angular-i18n)
 
 
@@ -961,15 +963,15 @@ Ting vi ikke rakk
 
 
 
-# Angular fremover
+# Angular's future
 
 Angular 2
 
 - ATScript
-- (Vesentlige) API-endringer
-- Forbedre performance
-- Bedre routing
-- Økt grad av modularisering
+- (Significant) API changes
+- Performance improvements
+- Improved routing
+- Modularization
 
 
 
