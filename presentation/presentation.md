@@ -424,8 +424,8 @@ angular.module('guestbooksModule')
 
 Didn't finish task 1? Run:
 
-`git stash -u`
-`git checkout task_2`
+- `git stash -u`
+- `git checkout task_2`
 
 
 
@@ -509,8 +509,8 @@ Hint:
 
 Didn't finish task 2? Run:
 
-`git stash -u`
-`git checkout task_3`
+- `git stash -u`
+- `git checkout task_3`
 
 
 
@@ -625,8 +625,8 @@ Tips:
 
 Didn't finish task 3? Run:
 
-`git stash -u`
-`git checkout task_4`
+- `git stash -u`
+- `git checkout task_4`
 
 
 Snippet from `index.html`
@@ -698,8 +698,8 @@ Tips:
 
 Didn't finish task 4? Run:
 
-`git stash -u`
-`git checkout task_5`
+- `git stash -u`
+- `git checkout task_5`
 
 
 
@@ -750,8 +750,8 @@ Tip:
 
 Didn't finish task 5? Run:
 
-`git stash -u`
-`git checkout task_6`
+- `git stash -u`
+- `git checkout task_6`
 
 ```html
 <!-- /src/entries/entries.html -->
@@ -834,8 +834,8 @@ angular.module('entriesModule')
 
 Didn't finish task 6? Run:
 
-`git stash -u`
-`git checkout task_7`
+- `git stash -u`
+- `git checkout task_7`
 
 
 ## Additional tasks
