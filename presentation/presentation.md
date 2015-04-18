@@ -323,6 +323,10 @@ Tips:
 <!-- more -->
 ```
 
+Do you want to start this task from scratch?
+
+- `git stash -u`
+- `git checkout task_1`
 
 
 
